@@ -1,0 +1,38 @@
+{
+  "name": "engined-grpc",
+  "version": "0.0.1",
+  "description": "gRPC service for engined",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnginedJS/engined-grpc.git"
+  },
+  "keywords": [
+    "service",
+    "engined",
+    "grpc"
+  ],
+  "engines": {
+    "node": ">=7.6"
+  },
+  "author": "Fred Chien <cfsghost@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EnginedJS/engined-grpc/issues"
+  },
+  "homepage": "https://github.com/EnginedJS/engined-grpc#readme",
+  "dependencies": {
+    "debug": "^3.0.1",
+    "engined": "0.0.4",
+    "google-proto-files": "^0.13.1",
+    "google-protobuf": "^3.4.0",
+    "groa": "0.0.8",
+    "groa-router": "0.0.2",
+    "grpc": "^1.6.0",
+    "object-path": "^0.11.4",
+    "protobufjs": "^6.8.0"
+  }
+}
