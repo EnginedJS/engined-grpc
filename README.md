@@ -12,13 +12,15 @@ Install via NPM:
 npm install engined-grpc
 ```
 
-## Usage
+## Implement gRPC Server
 
-start gRPC agent service in engined, see example below:
+start gRPC server agent service in engined, see example below:
 
 ```javascript
 const { Manager } = require('engined');
-const GRPCService = require('engined-grpc');
+const { Server } = require('engined-grpc');
+
+gRPCService = Server();
 
 const main = async () => {
 
@@ -26,13 +28,47 @@ const main = async () => {
 	let serviceManager = new Manager({ verbose: true });
 
 	// Adding agent to manager
-	serviceManager.add('GRPC', grpcService);
+	serviceManager.add('gRPCServer', gRPCService);
 
 	// Start all services
 	await serviceManager.startAll();
 };
 
 main();
+```
+
+### Customized Router
+
+`engined-grpc` is based on Groa.js which is useful gRPC middleware framework. We can create own router service to load proto file and get `groa-router` object to setup handler.
+
+```javascript
+const { Router } = require('engined-grpc');
+const path = require('path');
+
+// Create a router service which will load specific proto files
+const RouterService = Router({
+	protoFiles: [
+		path.join(__dirname, 'proto', 'example.proto')
+	]
+});
+
+module.exports = class gRPCRouterService extends RouterService {
+
+	async initialize(grpcAgent) {
+
+		// Get groa-router object
+		let router = grpcAgent.getRouter();
+
+		// Setup handler
+		router.rpc('/pipespool.PipeNetwork/Test', async (ctx) => {
+
+			// Return
+			ctx.body = {
+				content: 'Test!!!'
+			};
+		});
+	}
+};
 ```
 
 ## License
