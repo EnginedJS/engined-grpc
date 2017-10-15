@@ -27,6 +27,7 @@
   "dependencies": {
     "debug": "^3.0.1",
     "engined": "0.0.4",
+    "fs-extra": "^4.0.2",
     "google-proto-files": "^0.13.1",
     "google-protobuf": "^3.4.0",
     "groa": "^0.0.9",
